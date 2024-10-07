@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import RootLayout from "./layout/RootLayout";
-import CatergoryPages from "./pages/CatergoryPages/CatergoryPages";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import CartPage from "./pages/CartPage/CartPage";
+import CatergoryPages from "@pages/CatergoryPages/CatergoryPages.jsx";
+import ProfilePage from "@pages/ProfilePage/ProfilePage";
+import CartPage from "@pages/CartPage/CartPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: <RootLayout />, 
     children: [
       {
         path: "/",
