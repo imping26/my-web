@@ -1,19 +1,33 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import CategoryBody from "./layout/CategoryBody"; 
-import Menubar from "./layout/Menubar";
-import Topnav from "./layout/Topnav";
+import RootLayout from "./layout/RootLayout";
+import CatergoryPages from "./pages/CatergoryPages/CatergoryPages";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import CartPage from "./pages/CartPage/CartPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        path: "/",
+        element: <CatergoryPages />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  return (
-
-    <div className="h-screen max-w-[1280px] mx-auto  ">
-      <Topnav />
-      <main>
-        <CategoryBody/>
-      </main>
-      <Menubar/>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

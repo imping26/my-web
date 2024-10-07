@@ -27,10 +27,10 @@ function OfficialStore() {
       </div>
       {/*-----------*/}
       <div className="grid grid-cols-12 gap-2 pb-2">
-        {DATA.map((items) => {
+        {DATA.map((items,index) => {
           const { image, title } = items;
           return (
-            <div className="col-span-4 w-16 p-2 flex flex-col items-center justify-between">
+            <div key={index} className="col-span-4 w-16 p-2 flex flex-col items-center justify-between">
               <img src={image} className="h-[60px] object-contain" alt="" />
               <div className="w-[70px] text-center leading-[15px] pt-1">
                 <span className="text-xs ">{title}</span>

@@ -48,10 +48,10 @@ function RecommendList() {
       </div>
       {/*  */}
       <div className="grid grid-cols-12 gap-2">
-        {DATA.map((items) => {
+        {DATA.map((items,index) => {
           const { image, title, price, pricebefore } = items;
           return (
-            <div className="col-span-6 border rounded-lg">
+            <div key={index} className="col-span-6 border rounded-lg">
               <div className="relative  overflow-hidden flex items-center justify-center">
                 <img src={image} className="h-[120px] object-center" alt="" />
               </div>
