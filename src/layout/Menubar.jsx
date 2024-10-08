@@ -31,16 +31,15 @@ const DATA = [
 ];
 
 function Menubar() {
-
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
 
   const goPages = (page) => {
-    navigate(page); 
+    navigate(page);
   };
 
   return (
-    <footer>
-      <ul className="flex fixed bottom-0 w-full bg-white border-t p-2 shadow-inner rounded-tl-2xl rounded-tr-2xl">
+    <footer className="fixed h-[--bottom-height] bottom-0 w-full bg-white border-t p-2 shadow-inner rounded-tl-2xl rounded-tr-2xl">
+      <ul className="flex">
         {DATA.map((items) => {
           const { title, value } = items;
           return (

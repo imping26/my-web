@@ -1,7 +1,7 @@
 import { ChevronLeft, Search, UserRound } from "lucide-react";
 import React from "react";
 
-function Topnav() {
+function TopSearchNavbar() {
   return (
     <div className="h-18 bg-theme p-3 pt-5 flex items-center justify-between">
       <div>
@@ -33,4 +33,4 @@ function Topnav() {
   );
 }
 
-export default Topnav;
+export default TopSearchNavbar;

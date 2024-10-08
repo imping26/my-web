@@ -2,6 +2,9 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      'xxs': '380px',  
+    },
     extend: {
       colors: {
         "theme": "#e4121b",
