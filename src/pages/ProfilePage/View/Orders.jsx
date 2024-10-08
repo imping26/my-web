@@ -35,12 +35,12 @@ function Orders() {
         {DATA.map((items, index) => {
           const { title } = items;
           return (
-            <div key={index} className="text-center flex-1 py-2">
+            <div key={index} className="text-center flex-1 py-2 ">
               <div className="flex flex-col items-center gap-1">
                 <div className="border border-theme rounded-full p-2 flex justify-center">
                   <Wallet />
                 </div>
-                <span className="text-xs font-semibold whitespace-nowrap">
+                <span className="text-sm font-semibold whitespace-nowrap">
                   {title}
                 </span>
               </div>
