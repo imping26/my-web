@@ -40,7 +40,7 @@ function Orders() {
                 <div className="border border-theme rounded-full p-2 flex justify-center">
                   <Wallet />
                 </div>
-                <span className="text-sm font-semibold whitespace-nowrap">
+                <span className="text-xs font-semibold whitespace-nowrap">
                   {title}
                 </span>
               </div>
