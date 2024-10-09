@@ -1,6 +1,5 @@
 import React from "react";
-import {
-  ChevronRight,
+import { 
   CircleUserRound, 
 } from "lucide-react";
 
@@ -18,19 +17,19 @@ function UserInfo() {
 
       <div className="bg-white py-3">
         <div className="flex">
-          <div className="flex flex-col text-center flex-1 font-bold">
+          <div className="flex flex-col text-center flex-1 text-sm">
             <span className="font-semibold">2</span>
-            <p>My wishlist</p>
+            <p>My Wishlist</p>
           </div>
 
-          <div className="flex flex-col text-center flex-1 font-bold">
+          <div className="flex flex-col text-center flex-1 text-sm">
             <span className="font-semibold">2</span>
-            <p>My wishlist</p>
+            <p>Recently Viewed</p>
           </div>
 
-          <div className="flex flex-col text-center flex-1 font-bold">
+          <div className="flex flex-col text-center flex-1 text-sm">
             <span className="font-semibold">2</span>
-            <p>My wishlist</p>
+            <p>Vouchers</p>
           </div>
         </div>
 

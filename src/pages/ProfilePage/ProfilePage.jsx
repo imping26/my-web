@@ -8,7 +8,7 @@ import AccountDetails from "./View/AccountDetails";
 
 const InfoMemberShip = () => {
   return (
-    <div className="flex bg-white rounded-lg my-4 mx-5 items-center py-4 px-2">
+    <div className="flex bg-white rounded-lg my-4 mx-5 items-center p-4 text-sm">
       <div>
         View your order information and other with PlusOne membership detials
       </div>

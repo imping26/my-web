@@ -1,26 +1,33 @@
 import React from "react";
 import {
   ChevronRight,
-  CircleUserRound,
-  Wallet,
-  MessageCircleMore,
+  TableOfContents,
+  MapPinHouse,
+  LockKeyhole,
+  MessageCircleQuestion,
+  Book,
 } from "lucide-react";
 
 const DATA1 = [
   {
     title: "Account Information",
+    icon: <TableOfContents />,
   },
   {
     title: "My Address",
+    icon: <MapPinHouse />,
   },
   {
     title: "Privacy Policy",
+    icon: <LockKeyhole />,
   },
   {
     title: "Help Centre",
+    icon: <MessageCircleQuestion />,
   },
   {
     title: "Term of use",
+    icon: <Book />,
   },
 ];
 
@@ -28,12 +35,15 @@ function AccountDetails() {
   return (
     <div>
       {DATA1.map((items, index) => {
-        const { title } = items;
+        const { title, icon } = items;
         return (
-          <div key={index} className="p-3 flex justify-between h-14 bg-white">
+          <div
+            key={index}
+            className="p-3 flex items-center justify-between h-14 bg-white"
+          >
             <div className="flex gap-2">
-              <MessageCircleMore />
-              <div>{title}</div>
+              {icon}
+              <div className="text-sm">{title}</div>
             </div>
             <div>
               <ChevronRight />

@@ -37,6 +37,36 @@ const DATA = [
     price: 1689,
     pricebefore: 2099,
   },
+  {
+    image: "/apple-charger.png",
+    title: "Apple 35W Charger",
+    price: 1689,
+    pricebefore: 2099,
+  },
+  {
+    image: "/apple-charger.png",
+    title: "Apple 35W Charger",
+    price: 1689,
+    pricebefore: 2099,
+  },
+  {
+    image: "/apple-charger.png",
+    title: "Apple 35W Charger",
+    price: 1689,
+    pricebefore: 2099,
+  },
+  {
+    image: "/apple-charger.png",
+    title: "Apple 35W Charger",
+    price: 1689,
+    pricebefore: 2099,
+  },
+  {
+    image: "/apple-charger.png",
+    title: "Apple 35W Charger",
+    price: 1689,
+    pricebefore: 2099,
+  },
 ];
 
 function RecommendList() {
@@ -48,7 +78,7 @@ function RecommendList() {
       </div>
       {/*  */}
       <div className="grid grid-cols-12 gap-2">
-        {DATA.map((items,index) => {
+        {DATA.map((items, index) => {
           const { image, title, price, pricebefore } = items;
           return (
             <div key={index} className="col-span-6 border rounded-lg">
@@ -70,7 +100,6 @@ function RecommendList() {
             </div>
           );
         })}
- 
       </div>
     </div>
   );
