@@ -1,0 +1,102 @@
+{
+    "data": {
+        "result": [
+            {
+                "id": 3301, 
+                "name": "Mobile Phones",
+                "logo": null,
+                "image":null,
+                "level": 2,
+                "hasChildren": true,
+                "children": [
+                    {
+                        "id": 33011, 
+                        "name": "Mobile Phoneswqeqweqweqwe",
+                        "logo": null,
+                        "image":"washer.png",
+                        "level": 3,
+                        "hasChildren": false
+                    },
+                    {
+                        "id": 33012, 
+                        "name": "Mobile Phones",
+                        "logo": null,
+                        "image":"washer.png",
+                        "level": 3,
+                        "hasChildren": false
+                    },
+                    {
+                        "id": 33013, 
+                        "name": "Mobile Phones",
+                        "logo": null,
+                        "image":"washer.png",
+                        "level": 3,
+                        "hasChildren": false
+                    },
+                    {
+                        "id": 33014, 
+                        "name": "Mobile Phones",
+                        "logo": null,
+                        "image":"washer.png",
+                        "level": 3,
+                        "hasChildren": false
+                    }
+                ]
+            },
+            {
+                "id": 3302, 
+                "name": "Mobile Accessories",
+                "logo": null,
+                "image":null,
+                "level": 2,
+                "hasChildren": true,
+                "children": [
+                    {
+                        "id": 33021, 
+                        "name": "Mobile Accessories",
+                        "logo": null,
+                        "image":"washer.png",
+                        "level": 3,
+                        "hasChildren": false
+                    }
+                ]
+            },
+            {
+                "id": 3303, 
+                "name": "Tablets",
+                "logo": null,
+                "image":null,
+                "level": 2,
+                "hasChildren": true,
+                "children": [
+                    {
+                        "id": 33031, 
+                        "name": "Tablets",
+                        "logo": null,
+                        "image":"washer.png",
+                        "level": 3,
+                        "hasChildren": false
+                    }
+                ]
+            },
+            {
+                "id": 3304, 
+                "name": "Tablet Accessories",
+                "logo": null,
+                "image":null,
+                "level": 2,
+                "hasChildren": true,
+                "children": [
+                    {
+                        "id": 33041, 
+                        "name": "Tablet Accessories",
+                        "logo": null,
+                        "image":"washer.png",
+                        "level": 3,
+                        "hasChildren": false
+                    }
+                ]
+            }
+        ]
+    }
+}

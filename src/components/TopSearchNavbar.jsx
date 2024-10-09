@@ -11,16 +11,16 @@ function TopSearchNavbar() {
       </div>
       <div className="flex flex-2 items-center bg-white rounded-md p-2 h-10">
         <span>
-          <Search />
+          <Search className="text-slate-300" />
         </span>
         <div className="pl-2">
           <input
-            className="rounded-md focus:outline-none"
+            className="rounded-md focus:outline-none placeholder:text-sm" 
             type="text"
             placeholder="Search"
           />
         </div>
-        <button className="bg-theme py-1 px-2 rounded-md text-white">
+        <button className="bg-theme py-1 px-2 rounded-md text-white text-sm">
           Search
         </button>
       </div>

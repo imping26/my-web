@@ -4,11 +4,12 @@ import RootLayout from "./layout/RootLayout";
 import CatergoryPages from "@pages/CatergoryPages/CatergoryPages.jsx";
 import ProfilePage from "@pages/ProfilePage/ProfilePage";
 import CartPage from "@pages/CartPage/CartPage";
+import { QueryClientProvider ,QueryClient } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />, 
+    element: <RootLayout />,
     children: [
       {
         path: "/",
@@ -26,8 +27,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient()
+
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
