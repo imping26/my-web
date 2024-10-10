@@ -33,7 +33,7 @@ async function checkPublic() {
 }
 
 export async function publicApiGet(url, reqData) {
-  await checkPublic();
+  await checkPublic(); 
   return apiRequest(publicApi, "GET", url, reqData);
 }
 

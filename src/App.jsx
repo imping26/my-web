@@ -6,6 +6,7 @@ import CatergoryPages from "@pages/CatergoryPages/CatergoryPages.jsx";
 import ProfilePage from "@pages/ProfilePage/ProfilePage";
 import CartPage from "@pages/CartPage/CartPage";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import SearchPage from "@pages/SearchPage/SearchPage";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <CatergoryPages />,
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
       },
       {
         path: "/profile",
