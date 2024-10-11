@@ -11,8 +11,7 @@ function SearchPage() {
       <TopSearchNavbar />
       <Filterbar />
       <ListContent />
-      <FilterPage />
-      <div>Search</div>
+      <FilterPage /> 
     </WrapContent>
   );
 }

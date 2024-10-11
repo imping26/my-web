@@ -45,7 +45,7 @@ function Menubar() {
   };
 
   return (
-    <footer className="fixed h-[--bottom-height] bottom-0 w-full bg-white border-t p-2 shadow-inner rounded-tl-2xl rounded-tr-2xl">
+    <footer className="fixed h-[--bottom-height] bottom-0 w-full bg-white border-slate-200 border-t p-2 shadow-inner rounded-tl-2xl rounded-tr-2xl">
       <ul className="flex">
         {DATA.map((items, index) => {
           const { title, value, icon } = items;
