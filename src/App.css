@@ -1,5 +1,12 @@
+
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+/* slick */
+
+.slick-dots .slick-active div{
+  background: #e4121b;
 }

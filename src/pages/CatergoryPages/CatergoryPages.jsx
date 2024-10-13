@@ -112,11 +112,13 @@ const data = {
 };
 
 const UserProfileIcon = () => {
- return <div className="">
-    <div className="border rounded-full p-[3px]">
-      <UserRound className="text-white" />
+  return (
+    <div className="">
+      <div className="border rounded-full p-[3px]">
+        <UserRound className="text-white" />
+      </div>
     </div>
-  </div>;
+  );
 };
 
 function CatergoryPages() {
@@ -132,7 +134,7 @@ function CatergoryPages() {
 
   return (
     <WrapContent>
-      <TopSearchNavbar rightComponent={UserProfileIcon} theme/>
+      <TopSearchNavbar rightComponent={UserProfileIcon} theme />
       <div className="flex">
         <div className="w-1/5 bg-stone-100 px-2 py-1">
           <CatergoryList />

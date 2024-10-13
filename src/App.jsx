@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useState, useEffect } from "react";
 import "./App.css";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import RootLayout from "./layout/RootLayout";
 import CatergoryPages from "@pages/CatergoryPages/CatergoryPages.jsx";
 import ProfilePage from "@pages/ProfilePage/ProfilePage";
 import CartPage from "@pages/CartPage/CartPage";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import SearchPage from "@pages/SearchPage/SearchPage";
+import HomePage from "@pages/Home/HomePage";
+import DetailsPage from "./pages/DetailsPage/DetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/catergory",
         element: <CatergoryPages />,
       },
       {
@@ -30,6 +35,10 @@ const router = createBrowserRouter([
         element: <CartPage />,
       },
     ],
+  },
+  {
+    path: "/details",
+    element: <DetailsPage />,
   },
 ]);
 

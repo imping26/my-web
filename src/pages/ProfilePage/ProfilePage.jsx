@@ -1,7 +1,7 @@
 import React from "react";
 import WrapContent from "../../components/WrapContent";
 import Navbar from "../../components/Navbar";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, UserRound } from "lucide-react";
 import UserInfo from "./View/UserInfo";
 import Orders from "./View/Orders";
 import AccountDetails from "./View/AccountDetails";
@@ -19,10 +19,18 @@ const InfoMemberShip = () => {
   );
 };
 
+const UserProfile = () => {
+  return (
+    <div className="border rounded-full p-[3px]">
+      <UserRound className="text-white" />
+    </div>
+  );
+};
+
 function ProfilePage() {
   return (
     <WrapContent className="bg-stone-200">
-      <Navbar title="Account details" />
+      <Navbar title="Account details" rightComponent={UserProfile} />
       <UserInfo />
       <InfoMemberShip />
       <Orders />

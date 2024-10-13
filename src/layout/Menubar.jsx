@@ -18,13 +18,13 @@ const DATA = [
   {
     title: "Category",
     icon: <SquareStack />,
-    value: "/",
+    value: "/catergory",
   },
-  {
-    title: "Chat",
-    icon: <MessageSquareText />,
-    value: "/",
-  },
+  // {
+  //   title: "Chat",
+  //   icon: <MessageSquareText />,
+  //   value: "/",
+  // },
   {
     title: "Cart",
     icon: <ShoppingCart />,
@@ -38,6 +38,7 @@ const DATA = [
 ];
 
 function Menubar() {
+
   const navigate = useNavigate();
 
   const goPages = (page) => {

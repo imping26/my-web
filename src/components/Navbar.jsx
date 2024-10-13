@@ -1,10 +1,15 @@
-import { ChevronLeft, UserRound } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function Navbar({ title = "" }) {
+function Navbar({ title = "", backTo, rightComponent: RightComponent }) {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(backTo ? backTo : "/");
+  };
   return (
-    <div className="h-18 bg-theme p-3 flex items-center justify-between">
-      <div>
+    <div className="h-12 bg-theme p-3 flex items-center justify-between">
+      <div onClick={goBack}>
         <span>
           <ChevronLeft className="text-white" size={32} />
         </span>
@@ -12,11 +17,7 @@ function Navbar({ title = "" }) {
       <div className="flex flex-2 items-center p-2">
         <span className="text-white font-semibold">{title}</span>
       </div>
-      <div className="">
-        <div className="border rounded-full p-[3px]">
-          <UserRound className="text-white" />
-        </div>
-      </div>
+      <div className="">{RightComponent && <RightComponent />}</div>
     </div>
   );
 }

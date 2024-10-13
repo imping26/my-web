@@ -48,13 +48,13 @@ function FilterPage() {
     <div>
       <div
         className={cn(
-          "z-20 fixed top-0 h-screen w-10/12 bg-white shadow-2xl ease-out delay-150 duration-300 flex flex-col justify-between",
+          "z-20 fixed top-0 h-screen w-10/12 bg-white shadow-2xl ease-in-out delay-100 duration-300 flex flex-col justify-between",
           isOpen ? "right-0" : "-right-96"
         )}
       >
         <div className="pt-10 px-3 flex flex-col gap-6 overflow-y-auto">
           <div>
-            <div className="pb-2">Price Range</div>
+            <div className="pb-2 font-semibold">Price Range</div>
             <div className="flex w-full">
               <input
                 type="number"
@@ -73,22 +73,22 @@ function FilterPage() {
               />
             </div>
           </div>
-
+          {/*  */}
           <div>
-            <div className="pb-2">In Stock</div>
+            <div className="pb-2 font-semibold">In Stock</div>
             <label className="flex items-center">
               <input
                 type="checkbox"
                 checked={filterData.inStock}
                 onChange={(e) => handleInputChange(e, "inStock")}
-                className="mr-2"
+                className="mr-2 accent-theme"
               />
               <span>In stock only</span>
             </label>
           </div>
-
+          {/*  */}
           <div>
-            <div className="pb-2">Category</div>
+            <div className="pb-2 font-semibold">Category</div>
             <div className="grid grid-cols-12 gap-2">
               {["Iphone", "AI Enabled"].map((category) => (
                 <div key={category} className="col-span-4">
@@ -107,22 +107,22 @@ function FilterPage() {
               ))}
             </div>
           </div>
-
+          {/*  */}
           <div>
-            <div className="pb-1">Rating</div>
+            <div className="pb-1 font-semibold">Rating</div>
             <div className="flex flex-col">
               {[5, 4, 3, 2, 1].map((star) => {
                 return (
                   <label
                     key={star}
-                    className="flex items-center font-semibold pt-1"
+                    className="flex items-center pt-1"
                   >
                     <input
                       type="radio"
                       value={star}
                       checked={filterData.rating === star}
                       onChange={(e) => handleInputChange(e, "rating")}
-                      className="mr-2 checked:bg-red-400"
+                      className="mr-2 accent-theme"
                     />
                     {star} Star{star !== 1 && "s"} {star !== 5 && "& Up"}
                   </label>
@@ -137,7 +137,7 @@ function FilterPage() {
             onClick={handleReset}
             className="p-3 border border-stone-400 rounded-md flex-1"
           >
-             Reset
+            Reset
           </button>
           <button
             onClick={handleSubmit}
@@ -147,10 +147,11 @@ function FilterPage() {
           </button>
         </div>
       </div>
+      {/*filter sidebar overlay */}
       <div
         onClick={closeFilterSideBar}
         className={cn(
-          "lg:hidden fixed top-0 right-0 w-screen h-screen bg-gray-900 bg-opacity-30 opacity-0 duration-150",
+          "lg:hidden fixed top-0 right-0 w-screen h-screen bg-gray-900 bg-opacity-30 transition duration-300",
           isOpen ? "opacity-100 block z-10" : "opacity-0 hidden"
         )}
       ></div>

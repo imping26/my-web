@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const DATA = [
   {
@@ -70,6 +71,10 @@ const DATA = [
 ];
 
 function ListContent() {
+  const navigate = useNavigate();
+  const goDetailsPages = () => {
+    navigate("/details");
+  };
   return (
     <div>
       <div className="grid grid-cols-12 gap-2 px-3 pt-3">
@@ -77,6 +82,7 @@ function ListContent() {
           const { image, title, price, pricebefore } = items;
           return (
             <div
+              onClick={goDetailsPages}
               key={index}
               className="col-span-6 border border-slate-400 rounded-lg"
             >
