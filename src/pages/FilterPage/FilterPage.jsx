@@ -1,9 +1,26 @@
 import React, { useState } from "react";
 import { cn } from "../../lib/utils";
 import useFilterSideBarStore from "../../store/useFilterSideBarStore";
+import { useItemListStore } from "../../store/useItemListStore";
+
+const CatergoryList = [
+  {
+    name: "Digital Gadgets",
+    value: "DIGITAL_GADGETS",
+  },
+  {
+    name: "Computer Laptop",
+    value: "COMPUTER_LAPTOP",
+  },
+  {
+    name: "Mobile Tabtel",
+    value: "MOBILE_TABLET",
+  },
+];
 
 function FilterPage() {
   const { isOpen, closeFilterSideBar } = useFilterSideBarStore();
+  const store = useItemListStore();
   const [filterData, setFilterData] = useState({
     priceRangeMin: "",
     priceRangeMax: "",
@@ -30,7 +47,7 @@ function FilterPage() {
   };
 
   const handleSubmit = () => {
-    console.log("Filter data submitted:", filterData);
+    store.fetchItemDetails({ data: filterData });
     closeFilterSideBar();
   };
 
@@ -90,18 +107,18 @@ function FilterPage() {
           <div>
             <div className="pb-2 font-semibold">Category</div>
             <div className="grid grid-cols-12 gap-2">
-              {["Iphone", "AI Enabled"].map((category) => (
-                <div key={category} className="col-span-4">
+              {CatergoryList.map((category) => (
+                <div key={category.value} className="col-span-4">
                   <button
                     className={cn(
-                      "px-5 py-1 h-[30px] rounded-sm w-full text-sm",
-                      filterData.categories.includes(category)
+                      "px-2 py-1 h-[30px] rounded-sm w-full text-sm",
+                      filterData.categories.includes(category.value)
                         ? "bg-theme text-white"
                         : "bg-stone-200 text-stone-400"
                     )}
-                    onClick={() => handleCategoryToggle(category)}
+                    onClick={() => handleCategoryToggle(category.value)}
                   >
-                    <span className="line-clamp-1">{category}</span>
+                    <span className="line-clamp-1">{category.name}</span>
                   </button>
                 </div>
               ))}
@@ -113,10 +130,7 @@ function FilterPage() {
             <div className="flex flex-col">
               {[5, 4, 3, 2, 1].map((star) => {
                 return (
-                  <label
-                    key={star}
-                    className="flex items-center pt-1"
-                  >
+                  <label key={star} className="flex items-center pt-1">
                     <input
                       type="radio"
                       value={star}

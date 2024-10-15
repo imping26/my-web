@@ -1,54 +1,21 @@
-import React from "react";
-import { 
-  TabletSmartphone,
-  HousePlug,
-  CarFront,
-  Baby,
-  Carrot,
-  CookingPot,
-} from "lucide-react";
+import React from "react"; 
+import useItemList from "../../../hooks/useItemList";
+import { cn } from "../../../lib/utils";
 
-const ITEM = [
-  {
-    title: "Digital Gadget",
-    value: "",
-    icon: <TabletSmartphone />,
-  },
-  {
-    title: "Home Appliances",
-    value: "",
-    icon: <HousePlug />,
-  },
-  {
-    title: "Automobile",
-    value: "",
-    icon: <CarFront />,
-  },
-  {
-    title: "Toys",
-    value: "",
-    icon: <Baby />,
-  },
-  {
-    title: "Groceries",
-    value: "",
-    icon: <Carrot />,
-  },
-  {
-    title: "Kitchen Utensils",
-    value: "",
-    icon: <CookingPot />,
-  },
-];
-
-const ListItem = ({ item }) => {
-  const { title, icon } = item;
+const ListItem = ({ item, select }) => {
+  const { title, icon: Icon, value, isSelected } = item;
   return (
-    <div className="flex flex-col items-center py-2">
-      <div className="p-2 rounded-full border border-slate-300 text-green-500">
-        {icon}
-        {/* <Coffee size={32} className="text-green-500" /> */}
-        {/* <img className="w-[32px] h-[32px] rounded-full" src={image} alt="" /> */}
+    <div
+      className={"flex flex-col items-center py-2 "}
+      onClick={() => select(value)}
+    >
+      <div
+        className={cn(
+          "p-2 rounded-full border border-slate-300 ",
+          isSelected ? "text-theme" : "text-green-500"
+        )}
+      >
+        <Icon />
       </div>
       <p className="text-center text-xs pt-1">{title}</p>
     </div>
@@ -56,10 +23,14 @@ const ListItem = ({ item }) => {
 };
 
 function CatergoryList() {
+  const { selectCategoryList , sidebarItemList } = useItemList();
+  const handleSelect = (category) => {
+    selectCategoryList(category);
+  };
   return (
     <div className="sticky top-0">
-      {ITEM.map((item, index) => {
-        return <ListItem key={index} item={item} />;
+      {sidebarItemList.map((item, index) => {
+        return <ListItem key={index} item={item} select={handleSelect} />;
       })}
     </div>
   );

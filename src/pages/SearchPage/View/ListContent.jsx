@@ -1,90 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const DATA = [
-  {
-    image: "/apple-charger.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/washer.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/apple-charger.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/apple-charger.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/washer.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/apple-charger.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/apple-charger.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/apple-charger.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/apple-charger.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/apple-charger.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-  {
-    image: "/apple-charger.png",
-    title: "Apple 35W Charger",
-    price: 1689,
-    pricebefore: 2099,
-  },
-];
+import { useItemListStore } from "../../../store/useItemListStore";
+import { useQuery } from "@tanstack/react-query";
 
 const ProductCard = ({ item, isGrid, onClick }) => {
-  const { image, title, price, pricebefore } = item;
+ 
+  const { image, title, price, currentPrice, inStock } = item;
 
   return (
     <div
-      onClick={onClick}
-      className={`border border-slate-400 rounded-lg ${
+      onClick={!inStock ? null : onClick}
+      className={`relative border border-slate-400 rounded-lg ${
         isGrid ? "flex items-center" : "col-span-6"
-      }`}
+      } `}
     >
       <div className="relative overflow-hidden flex items-center justify-center">
         <img
-          src={image}
+          src={`http://localhost:3000/${image}`}
           className={`object-contain ${
-            isGrid ? "h-[120px] w-[120px]" : "h-[120px] object-center"
+            isGrid ? "h-[120px] w-[100px]" : "h-[120px] object-center"
           }`}
           alt={title}
         />
@@ -99,12 +33,17 @@ const ProductCard = ({ item, isGrid, onClick }) => {
           <span>{title}</span>
         </div>
         <div className="text-xs flex flex-col">
-          <span className="text-red-500">RM {price.toFixed(2)}</span>
+          <span className="text-red-500">RM {currentPrice.toFixed(2)}</span>
           <span>
-            <s>RM {pricebefore.toFixed(2)}</s>
+            <s>RM {price.toFixed(2)}</s>
           </span>
         </div>
       </div>
+      {!inStock ? (
+        <div className="absolute top-0 left-0 h-full bg-stone-100/50 w-full flex justify-center items-center">
+          <p className="font-bold text-theme">OUT OF STOCK</p>
+        </div>
+      ) : null}
     </div>
   );
 };
@@ -116,6 +55,19 @@ const ListContent = ({ isGrid }) => {
     navigate("/details");
   };
 
+  const store = useItemListStore();
+
+  useQuery({
+    queryKey: ["itemList"],
+    queryFn: () => store.fetchItemDetails(),
+  });
+
+  let { result, message } = store.searchPageList;
+
+  if (message) {
+    return <div className="w-full h-[150px] flex justify-center items-center">{message}</div>;
+  }
+
   return (
     <div
       className={
@@ -124,14 +76,16 @@ const ListContent = ({ isGrid }) => {
           : "grid grid-cols-12 gap-2 px-3 pt-3"
       }
     >
-      {DATA.map((item, index) => (
-        <ProductCard
-          key={index}
-          item={item}
-          isGrid={isGrid}
-          onClick={goDetailsPages}
-        />
-      ))}
+      {result && result.length > 0
+        ? result.map((item, index) => (
+            <ProductCard
+              key={item.id}
+              item={item}
+              isGrid={isGrid}
+              onClick={goDetailsPages}
+            />
+          ))
+        : null}
     </div>
   );
 };

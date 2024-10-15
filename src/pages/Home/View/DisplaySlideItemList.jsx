@@ -3,7 +3,7 @@ import React from "react";
 function DisplaySlideItemList() {
   return (
     <div className=" ">
-      <h2 className="w-[95%] float-end font-semibold bg-stone-300 rounded-tl-md rounded-bl-md px-3 py-1">
+      <h2 className="w-[95%] float-end font-semibold bg-stone-300 rounded-tl-md rounded-bl-md px-3 py-1 mb-2">
         Digital Gadgets
       </h2>
       <div className="w-full flex overflow-x-auto space-x-4 px-4">
