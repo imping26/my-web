@@ -3,16 +3,16 @@ import WrapContent from "../../components/WrapContent";
 import Navbar from "../../components/Navbar";
 import { ChevronRight, UserRound } from "lucide-react";
 import UserInfo from "./View/UserInfo";
-import Orders from "./View/Orders";
+import MyOrder from "./View/MyOrder";
 import AccountDetails from "./View/AccountDetails";
 
 const InfoMemberShip = () => {
   return (
     <div className="flex bg-white rounded-lg my-4 mx-5 items-center p-4 text-sm">
-      <div>
+      <p>
         View your order information and other with PlusOne membership detials
-      </div>
-      <div className="">
+      </p>
+      <div>
         <ChevronRight size={28} />
       </div>
     </div>
@@ -33,7 +33,7 @@ function ProfilePage() {
       <Navbar title="Account details" rightComponent={UserProfile} />
       <UserInfo />
       <InfoMemberShip />
-      <Orders />
+      <MyOrder />
       <AccountDetails />
     </WrapContent>
   );

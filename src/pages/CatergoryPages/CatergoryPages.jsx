@@ -7,10 +7,15 @@ import TopSearchNavbar from "../../components/TopSearchNavbar";
 import { UserRound } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useItemListStore } from "../../store/useItemListStore";
+import { useNavigate } from "react-router-dom";
 
 const UserProfileIcon = () => {
+  const navigate = useNavigate();
+  const goProfile = () => {
+    navigate("/profile");
+  };
   return (
-    <div className="">
+    <div onClick={goProfile}>
       <div className="border rounded-full p-[3px]">
         <UserRound className="text-white" />
       </div>
@@ -23,7 +28,7 @@ function CatergoryPages() {
   useQuery({
     queryKey: ["catergorylist"],
     queryFn: () => store.fetchCatergoryList({ category: "MOBILE_TABLET" }),
-  }); 
+  });
   return (
     <WrapContent>
       <TopSearchNavbar rightComponent={UserProfileIcon} theme />

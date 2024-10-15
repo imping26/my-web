@@ -14,6 +14,9 @@ function TopSearchNavbar({
   const goBack = () => {
     navigate(backTo ? backTo : "/");
   };
+  const goSearchPage = () => {
+    navigate("/search");
+  };
   return (
     <div
       className={cn(
@@ -24,7 +27,7 @@ function TopSearchNavbar({
     >
       {home ? (
         <div>
-          <span> 
+          <span>
             <HomeIcon
               className={theme ? "text-white" : "text-black"}
               size={32}
@@ -46,7 +49,7 @@ function TopSearchNavbar({
         <span>
           <Search className="text-slate-300" />
         </span>
-        <div className="pl-2">
+        <div className="pl-2" onClick={goSearchPage}>
           <input
             className="rounded-md focus:outline-none placeholder:text-sm"
             type="text"

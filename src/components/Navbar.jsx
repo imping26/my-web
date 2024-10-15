@@ -15,7 +15,7 @@ function Navbar({ title = "", backTo, rightComponent: RightComponent }) {
         </span>
       </div>
       <div className="flex flex-2 items-center p-2">
-        <span className="text-white font-semibold">{title}</span>
+        <p className="text-white font-semibold">{title}</p>
       </div>
       <div className="">{RightComponent && <RightComponent />}</div>
     </div>

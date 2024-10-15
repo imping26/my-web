@@ -43,7 +43,7 @@ function AccountDetails() {
           >
             <div className="flex gap-2">
               {icon}
-              <div className="text-sm">{title}</div>
+              <p className="text-sm">{title}</p>
             </div>
             <div>
               <ChevronRight />

@@ -6,8 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 function SliderSC({
   items = [],
   components: Components,
-  singleBanner,
-  config,
 }) {
   const settings = {
     infinite: true,
@@ -24,8 +22,7 @@ function SliderSC({
         </div>
       );
     },
-    customPaging: (i) => {
-      console.log(i)
+    customPaging: (i) => { 
      return <div
         style={{
           width: "30px",

@@ -31,7 +31,7 @@ const FeatureBrand = () => {
   return (
     <div className="p-3">
       <div>
-        <span className="text-sm text-stone-600">Featured brands</span>
+        <p className="text-sm text-stone-600">Featured brands</p>
       </div>
       <div className="flex flex-wrap">
         {[...Array(5)].map((_, index) => (

@@ -1,7 +1,5 @@
 import React from "react";
-import { 
-  CircleUserRound, 
-} from "lucide-react";
+import { CircleUserRound } from "lucide-react";
 
 function UserInfo() {
   return (
@@ -10,8 +8,8 @@ function UserInfo() {
         <div className="">
           <CircleUserRound size={64} className="text-white font-bold" />
         </div>
-        <div className="">
-          <span className="text-white text-lg font-semibold">TESTER123</span>
+        <div>
+          <p className="text-white text-lg font-semibold">TESTER123</p>
         </div>
       </div>
 
@@ -32,8 +30,6 @@ function UserInfo() {
             <p>Vouchers</p>
           </div>
         </div>
-
-       
       </div>
     </>
   );

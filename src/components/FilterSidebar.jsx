@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { cn } from "../../lib/utils";
-import useFilterSideBarStore from "../../store/useFilterSideBarStore";
-import { useItemListStore } from "../../store/useItemListStore";
+import { cn } from "../lib/utils";
+import useFilterSideBarStore from "../store/useFilterSideBarStore";
+import { useItemListStore } from "../store/useItemListStore";
 
 const CatergoryList = [
   {
@@ -18,7 +18,7 @@ const CatergoryList = [
   },
 ];
 
-function FilterPage() {
+function FilterSidebar() {
   const { isOpen, closeFilterSideBar } = useFilterSideBarStore();
   const store = useItemListStore();
   const [filterData, setFilterData] = useState({
@@ -173,4 +173,4 @@ function FilterPage() {
   );
 }
 
-export default FilterPage;
+export default FilterSidebar;

@@ -31,13 +31,13 @@ const DATA = [
   },
 ];
 
-function Orders() {
+function MyOrder() {
   return (
     <div className="px-5 bg-stone-100 ">
       <div className="flex justify-between items-center py-2">
         <div className="flex items-center">
           <div className="h-4 w-1 bg-theme mr-1"></div>
-          <span className="font-semibold text-xs">MY ORDERS</span>
+          <p className="font-semibold text-xs">MY ORDERS</p>
         </div>
         <div className="flex items-center text-sky-500 text-xs">
           View all Order <ChevronRight size={16} />
@@ -52,9 +52,9 @@ function Orders() {
                 <div className="border border-theme rounded-full p-2 flex justify-center">
                   {icon}
                 </div>
-                <span className="text-xs font-semibold whitespace-nowrap">
+                <p className="text-xs font-semibold whitespace-nowrap">
                   {title}
-                </span>
+                </p>
               </div>
             </div>
           );
@@ -64,4 +64,4 @@ function Orders() {
   );
 }
 
-export default Orders;
+export default MyOrder;

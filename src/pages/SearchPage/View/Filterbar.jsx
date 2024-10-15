@@ -6,8 +6,7 @@ import { useItemListStore } from "../../../store/useItemListStore";
 function Filterbar() {
   const { openFilterSideBar } = useFilterSideBarStore();
 
-  const { lowestPrice, togglePrice, lowestSelling, toggleSelling } =
-    useItemListStore();
+  const { lowestPrice, togglePrice } = useItemListStore();
 
   const priceToggleHandler = () => {
     togglePrice();
@@ -23,7 +22,7 @@ function Filterbar() {
         className="justify-center flex items-center"
         onClick={priceToggleHandler}
       >
-        <span>Price</span>
+        <p>Price</p>
         <div>
           {lowestPrice ? <ArrowDown size={12} /> : <ArrowUp size={12} />}
         </div>
@@ -37,7 +36,6 @@ function Filterbar() {
           {lowestSelling ? <ArrowDown size={12} /> : <ArrowUp size={12} />}
         </div>
       </button> */}
-
       <button
         onClick={openFilterSideBar}
         className="justify-center flex items-center gap-2"
@@ -45,7 +43,7 @@ function Filterbar() {
         <div>
           <SlidersHorizontal size={12} />
         </div>
-        <span>Filter</span>
+        <p>Filter</p>
       </button>
     </div>
   );
