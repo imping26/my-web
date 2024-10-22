@@ -1,8 +1,12 @@
-# React + Vite
+# TO START THE PROJECT 
+ ``npm run dev``
+ 
+ # ABOUT THIS PROJECT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ just a personal projects for learning purpose 
+ - using react + tailwind + zustand
+ - including all the search terms
+ - add to cart / product detail
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# (remember to run this file for backend)  
+<https://github.com/imping26/myweb-be>
