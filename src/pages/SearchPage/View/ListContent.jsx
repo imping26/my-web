@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useItemListStore } from "../../../store/useItemListStore";
+import { useItemStore } from "../../../store/useItemStore";
 import { useQuery } from "@tanstack/react-query";
 
 const ProductCard = ({ item, isGrid, onClick }) => {
- 
-  const { image, title, price, currentPrice, inStock } = item;
+  const { id, image, title, price, currentPrice, inStock } = item;
 
   return (
     <div
-      onClick={!inStock ? null : onClick}
+      onClick={!inStock ? null : () => onClick(id)}
       className={`relative border border-slate-400 rounded-lg ${
         isGrid ? "flex items-center" : "col-span-6"
       } `}
@@ -26,7 +25,7 @@ const ProductCard = ({ item, isGrid, onClick }) => {
       {!isGrid && <div className="border-b mx-2"></div>}
       <div
         className={`flex flex-col font-semibold p-2 ${
-          isGrid ? "h-[100px] justify-between" : ""
+          isGrid ? "h-[100px] justify-between w-[300px]" : ""
         }`}
       >
         <div className="text-sm text-ellipsis overflow-hidden line-clamp-2 py-1">
@@ -51,21 +50,25 @@ const ProductCard = ({ item, isGrid, onClick }) => {
 const ListContent = ({ isGrid }) => {
   const navigate = useNavigate();
 
-  const goDetailsPages = () => {
-    navigate("/details");
+  const goDetailsPages = (id) => {
+    navigate(`/details/${id}`);
   };
 
-  const store = useItemListStore();
+  const store = useItemStore();
 
   useQuery({
     queryKey: ["itemList"],
-    queryFn: () => store.fetchItemDetails(),
+    queryFn: () => store.fetchItemList(),
   });
 
   let { result, message } = store.searchPageList;
 
   if (message) {
-    return <div className="w-full h-[150px] flex justify-center items-center">{message}</div>;
+    return (
+      <div className="w-full h-[150px] flex justify-center items-center">
+        {message}
+      </div>
+    );
   }
 
   return (

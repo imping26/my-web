@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { cn } from "../lib/utils";
 import useFilterSideBarStore from "../store/useFilterSideBarStore";
-import { useItemListStore } from "../store/useItemListStore";
+import { useItemStore } from "../store/useItemStore";
 
 const CatergoryList = [
   {
@@ -20,7 +20,7 @@ const CatergoryList = [
 
 function FilterSidebar() {
   const { isOpen, closeFilterSideBar } = useFilterSideBarStore();
-  const store = useItemListStore();
+  const store = useItemStore();
   const [filterData, setFilterData] = useState({
     priceRangeMin: "",
     priceRangeMax: "",
@@ -47,7 +47,7 @@ function FilterSidebar() {
   };
 
   const handleSubmit = () => {
-    store.fetchItemDetails({ data: filterData });
+    store.fetchItemList({ data: filterData });
     closeFilterSideBar();
   };
 

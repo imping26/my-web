@@ -1,12 +1,12 @@
 import { ArrowUp, ArrowDown, SlidersHorizontal } from "lucide-react";
 import React from "react";
 import useFilterSideBarStore from "../../../store/useFilterSideBarStore";
-import { useItemListStore } from "../../../store/useItemListStore";
+import { useItemStore } from "../../../store/useItemStore";
 
 function Filterbar() {
   const { openFilterSideBar } = useFilterSideBarStore();
 
-  const { lowestPrice, togglePrice } = useItemListStore();
+  const { lowestPrice, togglePrice } = useItemStore();
 
   const priceToggleHandler = () => {
     togglePrice();

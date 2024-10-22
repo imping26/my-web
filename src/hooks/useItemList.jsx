@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useItemListStore } from "../store/useItemListStore";
+import { useItemStore } from "../store/useItemStore";
 import { useQuery } from "@tanstack/react-query";
 
 function useItemList() {
-  const store = useItemListStore();
+  const store = useItemStore();
   const query = useQuery({
     queryKey: ["catergorylist"],
     queryFn: () => store.fetchCatergoryList(),

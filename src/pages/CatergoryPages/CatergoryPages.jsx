@@ -6,7 +6,7 @@ import WrapContent from "../../components/WrapContent";
 import TopSearchNavbar from "../../components/TopSearchNavbar";
 import { UserRound } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { useItemListStore } from "../../store/useItemListStore";
+import { useItemStore } from "../../store/useItemStore";
 import { useNavigate } from "react-router-dom";
 
 const UserProfileIcon = () => {
@@ -24,7 +24,7 @@ const UserProfileIcon = () => {
 };
 
 function CatergoryPages() {
-  const store = useItemListStore();
+  const store = useItemStore();
   useQuery({
     queryKey: ["catergorylist"],
     queryFn: () => store.fetchCatergoryList({ category: "MOBILE_TABLET" }),
