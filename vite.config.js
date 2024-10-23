@@ -13,6 +13,7 @@ export default defineConfig({
       "@store": fileURLToPath(new URL("./src/store/", import.meta.url)),
       "@assets": fileURLToPath(new URL("./src/assets/", import.meta.url)),
       "@pages": fileURLToPath(new URL("./src/pages/", import.meta.url)),
+      "@hooks": fileURLToPath(new URL("./src/hooks/", import.meta.url)),
     },
   },
 });

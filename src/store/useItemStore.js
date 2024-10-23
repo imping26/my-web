@@ -58,6 +58,7 @@ export const useItemStore = create((set, get) => ({
     return response;
   },
   fetchItemList: async (data) => {
+    console.log(data)
     const response = await publicApiPost(
       "http://localhost:3000/itemsdisplaylist",
       data
@@ -65,7 +66,7 @@ export const useItemStore = create((set, get) => ({
     set({ searchPageList: response });
     return response;
   },
-  fetchItemDetails: async (data) => {
+  fetchItemDetails: async (data) => { 
     const response = await publicApiPost(
       "http://localhost:3000/itemsdetail",
       data

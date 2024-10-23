@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useItemStore } from "../../../store/useItemStore";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query"; 
+import { useProductFilters } from "@hooks/useProductFilter";
 
 const ProductCard = ({ item, isGrid, onClick }) => {
   const { id, image, title, price, currentPrice, inStock } = item;
@@ -54,14 +55,24 @@ const ListContent = ({ isGrid }) => {
     navigate(`/details/${id}`);
   };
 
+  const { filterData } = useProductFilters();
   const store = useItemStore();
-
-  useQuery({
-    queryKey: ["itemList"],
-    queryFn: () => store.fetchItemList(),
+  useProductFilters
+  const { data: searchPageList, isLoading, error } = useQuery({
+    queryKey: ["itemList", filterData],
+    queryFn: () => store.fetchItemList({ data: filterData }),
+    enabled: !!filterData,
   });
 
   let { result, message } = store.searchPageList;
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   if (message) {
     return (

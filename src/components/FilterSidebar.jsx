@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "../lib/utils";
 import useFilterSideBarStore from "../store/useFilterSideBarStore";
 import { useItemStore } from "../store/useItemStore";
+import { useProductFilters } from "../hooks/useProductFilter";
 
 const CatergoryList = [
   {
@@ -19,15 +20,10 @@ const CatergoryList = [
 ];
 
 function FilterSidebar() {
+  const { setFilters, filterData, setFilterData } = useProductFilters();
+
   const { isOpen, closeFilterSideBar } = useFilterSideBarStore();
-  const store = useItemStore();
-  const [filterData, setFilterData] = useState({
-    priceRangeMin: "",
-    priceRangeMax: "",
-    inStock: false,
-    categories: [],
-    rating: null,
-  });
+  // const store = useItemStore();
 
   const handleInputChange = (e, field) => {
     const { value, type, checked } = e.target;
@@ -47,7 +43,8 @@ function FilterSidebar() {
   };
 
   const handleSubmit = () => {
-    store.fetchItemList({ data: filterData });
+    // store.fetchItemList({ data: filterData });
+    setFilters();
     closeFilterSideBar();
   };
 
