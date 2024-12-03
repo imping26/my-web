@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useItemStore } from "../../../store/useItemStore";
-import { useQuery } from "@tanstack/react-query"; 
+import { useQuery } from "@tanstack/react-query";
 import { useProductFilters } from "@hooks/useProductFilter";
 
 const ProductCard = ({ item, isGrid, onClick }) => {
@@ -57,8 +57,8 @@ const ListContent = ({ isGrid }) => {
 
   const { filterData } = useProductFilters();
   const store = useItemStore();
-  useProductFilters
-  const { data: searchPageList, isLoading, error } = useQuery({
+
+  const { isLoading, error } = useQuery({
     queryKey: ["itemList", filterData],
     queryFn: () => store.fetchItemList({ data: filterData }),
     enabled: !!filterData,
@@ -80,6 +80,10 @@ const ListContent = ({ isGrid }) => {
         {message}
       </div>
     );
+  }
+
+  if (result && result.length === 0) {
+    return <div className="text-center">No item found!</div>;
   }
 
   return (

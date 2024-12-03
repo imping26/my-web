@@ -3,7 +3,6 @@ import WrapContent from "../../components/WrapContent";
 import TopSearchNavbar from "../../components/TopSearchNavbar";
 import Filterbar from "./View/Filterbar";
 import ListContent from "./View/ListContent";
-import FilterSidebar from "../../components/FilterSidebar";
 import useFilterSideBarStore from "../../store/useFilterSideBarStore";
 import { Grid2x2, List } from "lucide-react";
 
@@ -36,7 +35,6 @@ function SearchPage() {
       />
       <Filterbar />
       <ListContent isGrid={isGrid} />
-      <FilterSidebar />
     </WrapContent>
   );
 }

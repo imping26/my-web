@@ -4,12 +4,16 @@ import { useNavigate } from "react-router-dom";
 
 function OfficialStore({ data }) {
   // Ensure data and data.result exist before trying to map
-  const results =  data?.result || [];
+  const results = data?.result || [];
 
   const navigate = useNavigate();
 
   const toSearchPage = () => {
     navigate("/search");
+  };
+
+  const goDetailsPages = (id) => {
+    navigate(`/details/${id}`);
   };
 
   return (
@@ -34,10 +38,15 @@ function OfficialStore({ data }) {
                 <div
                   key={item.id}
                   className="col-span-4 flex flex-col items-center "
+                  onClick={() => goDetailsPages(item.id)}
                 >
                   {item.image && (
                     <div className="relative overflow-hidden flex items-center justify-center">
-                      <img src={`http://localhost:3000/${item.image}`} className=" object-center" alt="" />
+                      <img
+                        src={`http://localhost:3000/${item.image}`}
+                        className=" object-center"
+                        alt=""
+                      />
                     </div>
                   )}
                   <div className="w-[70px] text-center text-sm text-ellipsis overflow-hidden leading-[15px] pt-1">

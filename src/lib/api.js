@@ -1,4 +1,5 @@
-import axios from "axios"; 
+import axios from "axios";
+import { toast } from "sonner";
 
 let privateApi = null;
 let publicApi = null;
@@ -6,7 +7,7 @@ let publicApi = null;
 async function createApi(headers) {
   return axios.create({
     timeout: 8000,
-    headers: { 
+    headers: {
       ...headers,
     },
   });
@@ -18,7 +19,7 @@ async function apiRequest(api, method, url, reqData, config) {
     return response.data;
   } catch (error) {
     if (error) {
-      console.log(error);
+      toast.error("error");
     }
     throw error;
   }
@@ -33,7 +34,7 @@ async function checkPublic() {
 }
 
 export async function publicApiGet(url, reqData) {
-  await checkPublic(); 
+  await checkPublic();
   return apiRequest(publicApi, "GET", url, reqData);
 }
 
@@ -41,4 +42,3 @@ export async function publicApiPost(url, reqData) {
   await checkPublic();
   return apiRequest(publicApi, "POST", url, reqData);
 }
- 

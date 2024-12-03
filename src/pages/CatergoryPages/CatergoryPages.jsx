@@ -1,7 +1,6 @@
 import React from "react";
 import CatergoryList from "./View/CatergoryList";
 import OfficialStore from "./View/OfficialStore";
-import RecommendList from "./View/RecommendList";
 import WrapContent from "../../components/WrapContent";
 import TopSearchNavbar from "../../components/TopSearchNavbar";
 import { UserRound } from "lucide-react";

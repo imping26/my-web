@@ -39,7 +39,7 @@ const CartItem = ({ item, handlerAddItem, handlerDecreasetem }) => {
 
 function CartPage() {
   const store = useItemStore();
-
+  let totalPrice;
   const handlerAddItem = (item) => {
     store.addItem(item);
   };
@@ -48,11 +48,24 @@ function CartPage() {
     store.removeItem(item);
   };
 
+  const handleCheckout = () => {
+    store.checkout();
+  };
+
+  if (store.cartList) {
+    totalPrice = store.cartList.reduce(
+      (acc, curr) => acc + curr.price * curr.quantity,
+      0
+    );
+  }
+
   return (
     <WrapContent>
-      <Navbar title="cart" />
+      <Navbar title="Cart" />
       <div className="p-3">
-        {store.cartList.length === 0 ? <div className="text-center">Empty!</div> : null}
+        {store.cartList.length === 0 ? (
+          <div className="text-center">Empty cart!</div>
+        ) : null}
         {store.cartList.map((i) => {
           return (
             <CartItem
@@ -63,6 +76,19 @@ function CartPage() {
             />
           );
         })}
+      </div>
+      <div className="fixed bottom-0 flex items-center w-full p-3">
+        <div className="flex-1 font-semibold text-sm">
+          Total price: RM {totalPrice.toFixed(2)}
+        </div>
+        <div className="flex-1 flex justify-center">
+          <button
+            className="bg-theme text-white text-lg p-3 border rounded-md flex-1"
+            onClick={handleCheckout}
+          >
+            Checkout
+          </button>
+        </div>
       </div>
     </WrapContent>
   );

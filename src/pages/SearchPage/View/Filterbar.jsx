@@ -2,6 +2,7 @@ import { ArrowUp, ArrowDown, SlidersHorizontal } from "lucide-react";
 import React from "react";
 import useFilterSideBarStore from "../../../store/useFilterSideBarStore";
 import { useItemStore } from "../../../store/useItemStore";
+import FilterSidebar from "../../../components/FilterSidebar";
 
 function Filterbar() {
   const { openFilterSideBar } = useFilterSideBarStore();
@@ -17,17 +18,18 @@ function Filterbar() {
   // };
 
   return (
-    <div className="flex py-2 px-5 justify-between">
-      <button
-        className="justify-center flex items-center"
-        onClick={priceToggleHandler}
-      >
-        <p>Price</p>
-        <div>
-          {lowestPrice ? <ArrowDown size={12} /> : <ArrowUp size={12} />}
-        </div>
-      </button>
-      {/* <button
+    <>
+      <div className="flex py-2 px-5 justify-between">
+        <button
+          className="justify-center flex items-center"
+          onClick={priceToggleHandler}
+        >
+          <p>Price</p>
+          <div>
+            {lowestPrice ? <ArrowDown size={12} /> : <ArrowUp size={12} />}
+          </div>
+        </button>
+        {/* <button
         className="flex-1 justify-center flex items-center gap-2"
         onClick={toggleSellingHandler}
       >
@@ -36,16 +38,18 @@ function Filterbar() {
           {lowestSelling ? <ArrowDown size={12} /> : <ArrowUp size={12} />}
         </div>
       </button> */}
-      <button
-        onClick={openFilterSideBar}
-        className="justify-center flex items-center gap-2"
-      >
-        <div>
-          <SlidersHorizontal size={12} />
-        </div>
-        <p>Filter</p>
-      </button>
-    </div>
+        <button
+          onClick={openFilterSideBar}
+          className="justify-center flex items-center gap-2"
+        >
+          <div>
+            <SlidersHorizontal size={12} />
+          </div>
+          <p>Filter</p>
+        </button>
+      </div>
+      <FilterSidebar />
+    </>
   );
 }
 

@@ -43,7 +43,6 @@ function FilterSidebar() {
   };
 
   const handleSubmit = () => {
-    // store.fetchItemList({ data: filterData });
     setFilters();
     closeFilterSideBar();
   };

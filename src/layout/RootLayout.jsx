@@ -1,11 +1,13 @@
 import React from "react";
-import { Outlet } from "react-router-dom"; 
+import { Outlet } from "react-router-dom";
 import Menubar from "./Menubar";
+import { Toaster } from "sonner";
 
 function RootLayout() {
   return (
-    <> 
-      <Outlet/>
+    <>
+      <Toaster richColors position="top-center" />
+      <Outlet />
       <Menubar />
     </>
   );

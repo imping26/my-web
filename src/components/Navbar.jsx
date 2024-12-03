@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Navbar({ title = "", backTo, rightComponent: RightComponent }) {
   const navigate = useNavigate();
   const goBack = () => {
-    navigate(backTo ? backTo : "/");
+    navigate(backTo ? backTo : -1);
   };
   return (
     <div className="h-12 bg-theme p-3 flex items-center justify-between">

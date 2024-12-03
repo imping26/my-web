@@ -29,17 +29,17 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProfilePage />,
-      },
-      {
-        path: "/cart",
-        element: <CartPage />,
-      },
+      }
     ],
   },
   {
     path: "/details/:id",
     element: <DetailsPage />,
   },
+  {
+    path: "/cart",
+    element: <CartPage />,
+  } 
 ]);
 
 const queryClient = new QueryClient();

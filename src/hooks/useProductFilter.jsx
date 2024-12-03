@@ -13,6 +13,7 @@ export function useProductFilters() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const store = useItemStore();
+
   useEffect(() => {
     setFilterData((prevData) => ({
       ...prevData,
@@ -32,7 +33,7 @@ export function useProductFilters() {
         ? parseInt(searchParams.get("rate"))
         : prevData.rating,
     }));
-    // store.fetchItemList({ data: filterData });
+    
   }, []);
 
   const setFilters = useCallback(() => {

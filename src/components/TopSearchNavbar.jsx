@@ -1,8 +1,8 @@
 import { ChevronLeft, HomeIcon, Search, UserRound } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { cn } from "../lib/utils";
 import { useNavigate } from "react-router-dom";
-
+import { useItemStore } from "../store/useItemStore";
 function TopSearchNavbar({
   className,
   theme,
@@ -10,13 +10,29 @@ function TopSearchNavbar({
   home = false,
   rightComponent: RightComponent,
 }) {
+  
+  const [searchValue, setSearchValue] = useState("");
+
   const navigate = useNavigate();
+
+  const store = useItemStore();
+
   const goBack = () => {
-    navigate(backTo ? backTo : "/");
+    navigate(backTo ? backTo : -1);
   };
+
   const goSearchPage = () => {
     navigate("/search");
   };
+
+  const confirmSearch = () => {
+    store.searchItem(searchValue.toLowerCase());
+  };
+
+  const searchValueHandler = (e) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <div
       className={cn(
@@ -54,9 +70,14 @@ function TopSearchNavbar({
             className="rounded-md focus:outline-none placeholder:text-sm"
             type="text"
             placeholder="Search"
+            value={searchValue}
+            onChange={searchValueHandler}
           />
         </div>
-        <button className="bg-theme py-1 px-2 rounded-md text-white text-sm">
+        <button
+          className="bg-theme py-1 px-2 rounded-md text-white text-sm"
+          onClick={confirmSearch}
+        >
           Search
         </button>
       </div>

@@ -1,6 +1,12 @@
 import { create } from "zustand";
 import { publicApiGet, publicApiPost } from "../lib/api";
-import { TabletSmartphone, Laptop, MonitorSmartphone } from "lucide-react";
+import {
+  TabletSmartphone,
+  Laptop,
+  MonitorSmartphone,
+  CircleParking,
+} from "lucide-react";
+import { toast } from "sonner";
 
 const sidebarList = [
   {
@@ -57,8 +63,18 @@ export const useItemStore = create((set, get) => ({
     set({ list: response });
     return response;
   },
+  searchItem: async (data) => {
+    const { result } = get().searchPageList;
+    if (data) {
+      const latest_result = result.filter((item) => {
+        return item.title.toLowerCase().includes(data);
+      });
+      set({ searchPageList: { result: latest_result } });
+    }else{
+      get().fetchItemList();
+    }
+  },
   fetchItemList: async (data) => {
-    console.log(data)
     const response = await publicApiPost(
       "http://localhost:3000/itemsdisplaylist",
       data
@@ -66,7 +82,7 @@ export const useItemStore = create((set, get) => ({
     set({ searchPageList: response });
     return response;
   },
-  fetchItemDetails: async (data) => { 
+  fetchItemDetails: async (data) => {
     const response = await publicApiPost(
       "http://localhost:3000/itemsdetail",
       data
@@ -94,49 +110,24 @@ export const useItemStore = create((set, get) => ({
           ...udpateCart[existingItemIndex],
           quantity: (udpateCart[existingItemIndex].quantity || 1) + 1,
         };
+        toast.success(`Successfully added 1 item to cart`, {
+          duration: 1000,
+        });
         return { cartList: udpateCart };
       } else {
         const newItem = { ...items, quantity: 1 };
         const newCartList = [...state.cartList, newItem];
+        toast.success(`Successfully added 1 item to cart`, {
+          duration: 1000,
+        });
         return { cartList: newCartList };
       }
     }),
-  // addItem: (item) =>
-  //   set((state) => {
-  //     const existIndex = [...state.cartList].findIndex((i) => i.id === item.id);
-  //     if (existIndex !== -1) {
-  //       const udpateAddCart = [...state.cartList];
-  //       if (udpateAddCart[existIndex].quantity > 0) {
-  //         udpateAddCart[existIndex].quantity++;
-  //       }
-  //       return { cartList: udpateAddCart };
-  //     } else {
-  //       console.log("don have this item");
-  //     }
-  //   }),
-  // removeItem: (item) =>
-  //   set((state) => {
-  //     const existIndex = [...state.cartList].findIndex((i) => i.id === item.id);
-  //     if (existIndex !== -1) {
-  //       const udpateAddCart = [...state.cartList];
-
-  //       if (udpateAddCart[existIndex].quantity <= 1) {
-  //         const deletCart = udpateAddCart.filter(
-  //           (i) => i.id !== udpateAddCart[existIndex].id
-  //         );
-  //         return { cartList: deletCart };
-  //       }
-
-  //       if (udpateAddCart[existIndex].quantity > 0) {
-  //         udpateAddCart[existIndex].quantity--;
-  //       }
-  //       return { cartList: udpateAddCart };
-  //     }
-  //   }),
-
   addItem: (item) =>
     set((state) => {
-      const existingItemIndex = state.cartList.findIndex((i) => i.id === item.id);
+      const existingItemIndex = state.cartList.findIndex(
+        (i) => i.id === item.id
+      );
       if (existingItemIndex !== -1) {
         const updatedCart = state.cartList.map((cartItem, index) =>
           index === existingItemIndex
@@ -149,10 +140,14 @@ export const useItemStore = create((set, get) => ({
         return state; // Return unchanged state if item not found
       }
     }),
-
+  checkout: () => {
+    console.log(get().cartList);
+  },
   removeItem: (item) =>
     set((state) => {
-      const existingItemIndex = state.cartList.findIndex((i) => i.id === item.id);
+      const existingItemIndex = state.cartList.findIndex(
+        (i) => i.id === item.id
+      );
       if (existingItemIndex !== -1) {
         const updatedCart = state.cartList.reduce((acc, cartItem) => {
           if (cartItem.id === item.id) {
@@ -162,13 +157,11 @@ export const useItemStore = create((set, get) => ({
             // if quantity is 1, item will be removed by not including it
           } else {
             acc.push(cartItem);
-          } 
+          }
           return acc;
         }, []);
         return { cartList: updatedCart };
       }
       return state; // return unchanged state if item not found
     }),
-
-
 }));
